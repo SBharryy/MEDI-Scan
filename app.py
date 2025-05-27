@@ -1,7 +1,7 @@
 import sys##################################
-import os
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+import os
+# pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 import matplotlib
 matplotlib.use('Agg')
 from flask import Flask, render_template, request, jsonify
@@ -14,7 +14,7 @@ from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
-# pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux###############################
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux###############################
 
 app = Flask(__name__)
 
@@ -696,8 +696,9 @@ if __name__ == '__main__':
     # app.run(debug=True)
     
     #For production (comment out when developing):
+    port = int(os.environ.get('PORT', 10000))  # Default to 10000 if not set
     from waitress import serve
-    serve(app, host="0.0.0.0", port=10000)
+    serve(app, host="0.0.0.0", port=port)
 
 
 # #For easy switching between development/production, you can use:
