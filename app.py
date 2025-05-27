@@ -1,21 +1,19 @@
 
-import sys
-import os
-##############################################
+import sys##################
 import matplotlib
 matplotlib.use('Agg')
-from flask import Flask, render_template, request, jsonify
+import pytesseract
 import os
+from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 import re
-import pytesseract
 from PIL import Image
 from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
 # Add this line (for Tesseract OCR to work online)
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'###################################
 
 app = Flask(__name__)
 
@@ -697,8 +695,9 @@ if __name__ == '__main__':
     # app.run(debug=True)
     
     #For production (comment out when developing):
-    from waitress import serve
     serve(app, host="0.0.0.0", port=10000)
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=port)
 
 
 # #For easy switching between development/production, you can use:
