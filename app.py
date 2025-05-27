@@ -1,4 +1,7 @@
 
+import sys
+import os
+##############################################
 import matplotlib
 matplotlib.use('Agg')
 from flask import Flask, render_template, request, jsonify
@@ -695,7 +698,7 @@ if __name__ == '__main__':
     
     #For production (comment out when developing):
     from waitress import serve
-    serve(app, host="0.0.0.0", port=5000)
+    serve(app, host="0.0.0.0", port=10000)
 
 
 # #For easy switching between development/production, you can use:
