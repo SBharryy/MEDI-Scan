@@ -580,15 +580,34 @@
             const formData = new FormData();
             formData.append('file', file);
             
+            // fetch(window.location.href, {
+            //     method: 'POST',
+            //     body: formData,
+            //     headers: {
+            //         'Accept': 'application/json'
+            //     }
+            // })
+            // .then(response => {
+            //     if (!response.ok) throw new Error('Network error');
+            //     return response.json();
+            // })
+            // .then(data => {
+            //     if (data.error) throw new Error(data.error);
+            //     stopLoading();
+            //     displayResults(data);
+            // })
+            // .catch(error => {
+            //     stopLoading();
+            //     showAlert('Analysis failed: ' + error.message);
+            //     console.error('Error:', error);
+            // });
+
             fetch(window.location.href, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                body: formData
             })
             .then(response => {
-                if (!response.ok) throw new Error('Network error');
+                if (!response.ok) throw new Error('Server error');
                 return response.json();
             })
             .then(data => {
@@ -598,7 +617,7 @@
             })
             .catch(error => {
                 stopLoading();
-                showAlert('Analysis failed: ' + error.message);
+                showAlert('Analysis failed. ' + error.message);
                 console.error('Error:', error);
             });
         }
