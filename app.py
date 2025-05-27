@@ -1,19 +1,20 @@
-
-import sys##################
+import sys##################################
+import os
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 import matplotlib
 matplotlib.use('Agg')
-import pytesseract
-import os
 from flask import Flask, render_template, request, jsonify
+# import os
 from werkzeug.utils import secure_filename
 import re
+# import pytesseract
 from PIL import Image
 from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
-# Add this line (for Tesseract OCR to work online)
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'###################################
+# pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux###############################
 
 app = Flask(__name__)
 
@@ -691,13 +692,12 @@ def upload_file():
         return jsonify({"error": "Server error: " + str(e)}), 500
 
 if __name__ == '__main__':
-    # # Development (keep this for testing)
+    # Development (keep this for testing)
     # app.run(debug=True)
     
     #For production (comment out when developing):
-    serve(app, host="0.0.0.0", port=10000)
     from waitress import serve
-    serve(app, host="0.0.0.0", port=port)
+    serve(app, host="0.0.0.0", port=10000)
 
 
 # #For easy switching between development/production, you can use:
@@ -705,6 +705,5 @@ if __name__ == '__main__':
 #     if os.environ.get('PRODUCTION'):
 #         from waitress import serve
 #         serve(app, host="0.0.0.0", port=5000)
-#         serve(app, host="0.0.0.0", port=port)    
 #     else:
 #         app.run(debug=True)
