@@ -11,9 +11,31 @@ from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
+
+# Add these right after your existing imports
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+import logging
+
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux###############################
 
 app = Flask(__name__)
+
+app = Flask(__name__)
+
+# Initialize logging
+logging.basicConfig(level=logging.INFO)
+app.logger.info("MediScan application starting...")
+
+# Initialize rate limiter
+limiter = Limiter(
+    app=app,
+    key_func=get_remote_address,
+    default_limits=["200 per day", "50 per hour"]
+)
+
+# Allowed file extensions
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # Configure upload folder
 UPLOAD_FOLDER = 'uploads'
@@ -689,15 +711,23 @@ def generate_plot(data):
 #         return jsonify({"error": "Server error: " + str(e)}), 500
 
 @app.route('/', methods=['GET', 'POST'])
+@limiter.limit("10 per minute")  # Rate limiting for this endpoint
 def upload_file():
     if request.method == 'POST':
         try:
             if 'file' not in request.files:
+                app.logger.warning("No file uploaded")
                 return jsonify({"error": "No file uploaded"}), 400
             
             file = request.files['file']
             if file.filename == '':
+                app.logger.warning("Empty filename submitted")
                 return jsonify({"error": "No file selected"}), 400
+
+            if not allowed_file(file.filename):
+                app.logger.warning(f"Invalid file type attempted: {file.filename}")
+                return jsonify({"error": "Only PNG, JPG, JPEG files allowed"}), 400
+                
 
             # Process image directly from memory
             img = Image.open(file.stream)
@@ -714,9 +744,15 @@ def upload_file():
             })
             
         except Exception as e:
+            app.logger.error(f"Error processing file: {str(e)}")
             return jsonify({"error": str(e)}), 500
 
     return render_template('index.html')
+
+# Helper function for file validation
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == '__main__':
     # Development (keep this for testing)
