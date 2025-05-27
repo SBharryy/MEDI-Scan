@@ -690,12 +690,12 @@ def upload_file():
         return jsonify({"error": "Server error: " + str(e)}), 500
 
 if __name__ == '__main__':
-    # Development (keep this for testing)
-    app.run(debug=True)
+    # # Development (keep this for testing)
+    # app.run(debug=True)
     
-    # #For production (comment out when developing):
-    # from waitress import serve
-    # serve(app, host="0.0.0.0", port=5000)
+    #For production (comment out when developing):
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=5000)
 
 
 # #For easy switching between development/production, you can use:
