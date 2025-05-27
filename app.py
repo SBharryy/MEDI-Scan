@@ -11,6 +11,8 @@ from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
+# Add this line (for Tesseract OCR to work online)
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 app = Flask(__name__)
 
