@@ -16,13 +16,18 @@ A Flask-based web application that analyzes medical test reports using OCR (Opti
 
 ## 🖥️ Screenshots
 
-### Dashboard Interface
-![Screenshot 2025-05-28 182525](https://github.com/user-attachments/assets/2f92f3a3-15c5-431b-ad9b-0a01a65a93c3)
-
+### Dashboard Interfaces
+#### Dashboard
+![Screenshot 2025-05-28 182525](https://github.com/user-attachments/assets/57b8f4c5-99c3-4b4e-b291-20d763f65d95)
+#### Dashboard After Upload
+![Screenshot 2025-05-28 182552](https://github.com/user-attachments/assets/18933807-453a-4d88-86fd-b911612ef3c2)
 
 ### Analysis Results
-![Results Screenshot](https://via.placeholder.com/600x400?text=Analysis+Results+Screenshot)  
-*(Replace with your results screenshot)*
+#### Rendered Chart
+![Screenshot 2025-05-28 182605](https://github.com/user-attachments/assets/93ad12a5-6bf4-44bd-9ca6-b5ac47da0dea)
+#### Results with Recommendation 
+![Screenshot 2025-05-28 182618](https://github.com/user-attachments/assets/818c7fab-2549-4c8a-af17-4440fd44dea8)
+
 
 ## 🚀 Quick Start
 
@@ -36,3 +41,33 @@ A Flask-based web application that analyzes medical test reports using OCR (Opti
    ```bash
    git clone https://github.com/yourusername/MediScan.git
    cd MediScan
+2. Create virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   venv\Scripts\activate  # Windows
+
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+5. Run the application:
+   ```bash
+   python app.py
+
+6. Open in browser:
+   http://localhost:10000
+
+## 🛠️ Technologies Used
+
+-Python Flask (Backend)
+
+-Tesseract OCR (Text extraction)
+
+-Matplotlib (Visualizations)
+
+-FuzzyWuzzy/RapidFuzz (Text matching)
+
+-HTML/CSS/JavaScript (Frontend)
+
+-Chart.js (Interactive charts)
