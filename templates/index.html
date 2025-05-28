@@ -783,6 +783,14 @@
                     }
                 }
             });
+
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+            
+            window.myChart = new Chart(ctx, {
+                // ... config ...
+            });
         }
         
         // Medical reference ranges for chart tooltips
