@@ -1,6 +1,6 @@
-![stethoscope_3147004 (1)](https://github.com/user-attachments/assets/e50fb752-79c3-41f5-a372-87ab2b8c431c)# MediScan - Medical Report Analyzer
+# MediScan - Medical Report Analyzer
 
-![stethoscope_3147004 (1)](https://github.com/user-attachments/assets/93242ee3-1215-4b6a-8655-da33bec82cc7)
+![stethoscope_3147004 (1)](https://github.com/user-attachments/assets/edb4f9d2-954c-4dbb-b3c7-da5ea2e58f07)
 
 
 A Flask-based web application that analyzes medical test reports using OCR (Optical Character Recognition) and provides intelligent insights about your health metrics.
@@ -17,17 +17,13 @@ A Flask-based web application that analyzes medical test reports using OCR (Opti
 ## 🖥️ Screenshots
 
 ### Dashboard Interface
+![Screenshot 2025-05-28 182525](https://github.com/user-attachments/assets/2f92f3a3-15c5-431b-ad9b-0a01a65a93c3)
 
-![stethoscope_3147004 (1)](https://github.com/user-attachments/assets/bc389dc2-53a3-485a-a222-31d74b9498ac)
-
-### Dashboard After Upload
 
 ### Analysis Results
-#### Result Screenshot
-![Rendered Chart](https://github.com/user-attachments/assets/290f65e6-0618-4a5d-8bb5-4ec5c77ee531)
+![Results Screenshot](https://via.placeholder.com/600x400?text=Analysis+Results+Screenshot)  
+*(Replace with your results screenshot)*
 
-![Results with recommendation ](https://github.com/user-attachments/assets/a7539408-45d0-42cb-899e-6ef5ad74db2d)
- 
 ## 🚀 Quick Start
 
 ### Prerequisites
