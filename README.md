@@ -1,6 +1,6 @@
 # MediScan - Medical Report Analyzer
 
-![MediScan Logo](https://via.placeholder.com/150x50?text=MediScan+Logo) *(Replace with your actual logo)*
+![MediScan Logo](😂) *(Replace with your actual logo)*
 
 A Flask-based web application that analyzes medical test reports using OCR (Optical Character Recognition) and provides intelligent insights about your health metrics.
 
