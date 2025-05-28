@@ -1,4 +1,4 @@
-import sys ######################
+
 import matplotlib
 matplotlib.use('Agg')
 from flask import Flask, render_template, request, jsonify
@@ -11,6 +11,7 @@ from fuzzywuzzy import process
 import matplotlib.pyplot as plt
 import base64
 import io
+
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux
 
 app = Flask(__name__)
@@ -672,8 +673,8 @@ def upload_file():
                 insights = analyze_health_data(health_data)
                 plot = generate_plot(health_data)
                 
-                if os.path.exists(filepath):
-                    os.remove(filepath)
+                # if os.path.exists(filepath):
+                #     os.remove(filepath)
                 
                 return jsonify({
                     "insights": insights,
