@@ -23,7 +23,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Configure Tesseract executable path
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Comprehensive reference ranges for a wide variety of tests
 medical_tests = {
@@ -609,10 +609,10 @@ def format_health_report(insights):
 
 def generate_plot(data):
     """Generate a bar chart and return it as a base64 image."""
-    # Use Agg backend which is thread-safe
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
+    # # Use Agg backend which is thread-safe
+    # import matplotlib
+    # matplotlib.use('Agg')
+    # import matplotlib.pyplot as plt
     
     plt.switch_backend('Agg')
 
@@ -695,6 +695,7 @@ if __name__ == '__main__':
     
     #For production (comment out when developing):
     from waitress import serve
+    port = int(os.environ.get("PORT",10000))
     serve(app, host="0.0.0.0", port=10000)
 
 
