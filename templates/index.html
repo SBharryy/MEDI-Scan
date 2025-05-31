@@ -580,13 +580,23 @@
             const formData = new FormData();
             formData.append('file', file);
             
+            // fetch(window.location.href, {
+            //     method: 'POST',
+            //     body: formData,
+            //     headers: {
+            //         'Accept': 'application/json'
+            //     }
+            // })
+
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
-                }
+                },
+                mode: 'cors'
             })
+                
             .then(response => {
                 if (!response.ok) throw new Error('Network error');
                 return response.json();
