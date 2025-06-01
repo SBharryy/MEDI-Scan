@@ -2,6 +2,8 @@
 import matplotlib
 matplotlib.use('Agg')
 from flask import Flask, render_template, request, jsonify
+import flask_cors
+from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
 import re
@@ -13,9 +15,8 @@ import base64
 import io
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Required for Render/Linux
-
 app = Flask(__name__)
-
+CORS(app)
 # Configure upload folder
 UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
@@ -647,47 +648,7 @@ def generate_plot(data):
 # ===== END OF NEW FUNCTION =====
 
 # ===== FLASK ROUTES (KEEP THIS AT THE BOTTOM) =====
-# @app.route('/', methods=['GET', 'POST'])
-# def upload_file():
-#     if request.method == 'GET':
-#         return render_template('index.html')  # Handle GET requests first
-    
-#     # POST handling
-#     try:
-#         if 'file' not in request.files:
-#             return jsonify({"error": "No file uploaded"}), 400
-        
-#         file = request.files['file']
-#         if file.filename == '':
-#             return jsonify({"error": "No file selected"}), 400
-        
-#         if file:
-#             filename = secure_filename(file.filename)
-#             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-#             file.save(filepath)
-            
-#             try:
-#                 raw_text = pytesseract.image_to_string(Image.open(filepath))
-#                 cleaned = clean_text(raw_text)
-#                 health_data = extract_health_metrics(cleaned)
-#                 insights = analyze_health_data(health_data)
-#                 plot = generate_plot(health_data)
-                
-#                 # if os.path.exists(filepath):
-#                 #     os.remove(filepath)
-                
-#                 return jsonify({
-#                     "insights": insights,
-#                     "plot": plot,
-#                     "health_data": health_data
-                    
-#                 })
-#             except Exception as e:
-#                 if os.path.exists(filepath):
-#                     os.remove(filepath)
-#                 return jsonify({"error": str(e)}), 500
-#     except Exception as e:
-#         return jsonify({"error": "Server error: " + str(e)}), 500
+# 
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -717,6 +678,7 @@ def upload_file():
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     # # Development (keep this for testing)
