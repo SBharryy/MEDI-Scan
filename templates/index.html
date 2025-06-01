@@ -349,7 +349,7 @@
                 padding: 1.5rem;
             }
             
-/*             #drop-zone {
+            /* #drop-zone {
                 padding: 1.5rem 0.5rem;
                 border-radius: 15px;
             } */
@@ -587,7 +587,6 @@
             //         'Accept': 'application/json'
             //     }
             // })
-
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData,
@@ -596,7 +595,6 @@
                 },
                 mode: 'cors'
             })
-                
             .then(response => {
                 if (!response.ok) throw new Error('Network error');
                 return response.json();
